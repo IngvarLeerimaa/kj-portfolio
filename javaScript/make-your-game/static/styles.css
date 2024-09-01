@@ -1,0 +1,159 @@
+@font-face { 
+    font-family: GameFont; 
+    src: url('../static/fonts/GameFont.ttf'); 
+} 
+body {
+    min-width: 950px;
+    background-color: rgb(39, 39, 39);
+    color: white;
+}
+
+.box {
+    z-index: 0;
+    background-color: black;
+    width: 900px;
+    height: 600px;
+    border: 1px solid white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+.game-title {
+    font: 35px GameFont;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+    white-space: nowrap;
+}
+
+.instructions  {
+    font: 17px GameFont;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%);
+}
+
+.instructions p {
+    text-align: center;
+}
+
+.start-game {
+    font: 15px GameFont;
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%);
+    animation: flash 1.5s infinite;
+}
+
+@keyframes flash {
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  .mothershipImg {
+    position: absolute;
+    width: 50px;
+    top: 35px;
+}
+
+.bullet {
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    background-color: white;
+}
+
+.enemy-bullet {
+    position: absolute;
+    width: 6px;
+    height: 15px;
+    background-color: white;
+}
+.enemies {
+    will-change: transform;
+}
+
+.game {
+    will-change: transform;
+}
+
+img {
+    position: absolute;   
+}
+
+.lives {
+    left: 0;
+    top: 0;
+}
+
+.lives img {
+    width: 30px;
+}
+
+.score {
+    font: 18px GameFont;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.time {
+    font: 18px GameFont;
+    position: absolute;
+    left: 50%;
+    top: 5px;
+    transform: translateX(-50%);
+}
+
+dialog {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(56, 55, 55, 0.8);
+    color: white;
+    padding: 20px;
+    border: none;
+}
+
+dialog p {
+    font: 20px GameFont;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+    border: #333;
+    z-index: 1;
+}
+
+dialog button {
+    z-index: 1;
+    font: 20px GameFont;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #0e0d0d;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+dialog button:hover {
+    background-color: #555;
+}
+
+.isSmallScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font: 40px GameFont;
+    z-index: 2;
+    background-color: rgba(56, 55, 55, 1);
+}

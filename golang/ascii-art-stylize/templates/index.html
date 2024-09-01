@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> ascii-art-web </title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+ <body >
+   <div id="centered">
+  <h1>ascii-art-web</h1>
+  <form method="POST" action="/ascii-art">
+    <label>
+      <textarea id="input" name="input" rows="4" cols="50" placeholder="Input your text here"></textarea>
+        </label>
+        <div id="centered">
+   <label>
+    <input type="radio" name="font" value="standard" checked>Standard
+       </label>
+   <label>
+    <input type="radio" name="font" value="shadow">Shadow
+      </label>
+   <label>
+    <input type="radio" name="font" value="thinkertoy">Thinkertoy
+     </label>
+    </div>
+    <br>  
+    <label>
+     <input id="centered" type="submit" value="Submit" /> 
+      </label>
+    </form>
+  <label>
+   <pre id="centered">{{.}}</pre>
+     </label>
+ </body>
+</html>

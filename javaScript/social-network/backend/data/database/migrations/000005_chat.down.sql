@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS "chat";
+DROP TABLE IF EXISTS "group_chat";

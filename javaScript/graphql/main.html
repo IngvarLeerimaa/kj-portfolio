@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    
+    <title>Main</title>
+</head>
+<body>
+    <main>
+    <h1>QraphQL</h1>
+    <div id="user"></div><br>
+    <br>
+
+    <div class="flex-wrap">
+        <svg 
+        data-pie 
+        data-color="highlight" 
+        data-percent="30" 
+        data-delay="450" 
+        data-speed="800" 
+        width="300" 
+        height="300"
+        viewBox="-150 -150 300 300">
+          <circle 
+            pathlength="100"
+            r="125" 
+            fill="transparent" 
+            stroke-dasharray="100" stroke-dashoffset="100"
+            stroke-width="50" 
+            />
+          <text aria-hidden="true"></text>
+        </svg>
+        <div class="grid-text">
+          <h2 data-color="highlight" id="better"></h2>
+          <p id="sideTextP"></p>
+        </div>
+      </div>
+      <br>
+      <br>
+      <!-- The bar container -->
+      <h2 id="middle" >This Bar Chart shows all the task you've done </h2>
+      <div id="chart-container"></div>
+      <h5 id="middle"><i>x = oldest to newest / y = xp gained</i></h5>
+    
+      <h3 id="middle"><i>Hover over the bars to see details</i></h3>
+    <div class="tooltip" id="tooltip"></div>
+    <br>
+    <br>
+</main>
+    <script src="main.js"></script>
+</body>
+</html>

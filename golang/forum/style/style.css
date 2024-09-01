@@ -1,0 +1,135 @@
+/* global */
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+html{
+    font-size: 14px;
+    font-family: "Titillium Web", sans-serif;
+    background-color: rgb(30, 30, 30);
+    color: white;
+}
+
+a{
+    color: rgb(180, 177, 177);
+    font-weight: bolder;
+    text-decoration: none;
+}
+h1{
+    padding:10px;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+h3{
+    padding: 10px;
+    font-weight: bolder;
+}
+
+/* homez */
+
+.container{
+    margin: 0px;   
+    padding: 0px;
+}
+
+.header {
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+
+.header form {
+    margin-left: 10px;
+}
+
+.category{
+    margin: 10px;
+    padding: 10px;
+}
+
+.category-description *{
+    margin-block: 0;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category-devider{
+    display: none;
+}
+
+.category-row {
+    list-style-type: none;
+}
+
+.category-title {
+    border: 10px;
+    background-color: rgb(44, 44, 44);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    margin-bottom: 10px;
+  }
+.category-row {
+    display: grid;
+   /*  grid-template-columns: minmax(0, 1fr) 120px; */
+  }
+.category-column{
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color:  rgb(37, 37, 37);
+
+}
+
+.comment{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.navBtn {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    background-color: rgb(54, 54, 54);  
+    text-align: center;
+    padding: 0 20px;
+    line-height: 50px;
+   
+}
+.navBtn:hover {
+    background-color: rgb(37, 37, 37);
+}
+/* like dislike */
+
+  button {
+    cursor: pointer;
+    outline: 0;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
+  .green {
+    color: green;
+  }
+  
+  .red {
+    color: red;
+  }
+  

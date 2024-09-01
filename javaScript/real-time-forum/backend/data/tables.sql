@@ -1,0 +1,74 @@
+CREATE TABLE IF NOT EXISTS "users" (
+"userID" INTEGER PRIMARY KEY AUTOINCREMENT,
+"username" TEXT NOT NULL,
+"firstname" TEXT NOT NULL,
+"lastname" TEXT NOT NULL,
+"age" TEXT NOT NULL,
+"gender" TEXT NOT NULL,
+"email" TEXT NOT NULL,
+"password" TEXT NOT NULL,
+"timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "sessions" (
+"sessionID" TEXT NOT NULL PRIMARY KEY,
+"userID" INTEGER NOT NULL,
+"timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY ("userID") REFERENCES "users" ("userID")
+);
+
+CREATE TABLE IF NOT EXISTS "categories" (
+"categoryID" INTEGER PRIMARY KEY AUTOINCREMENT,
+"name" TEXT NOT NULL,
+"description" TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "threads" (
+"threadID" INTEGER PRIMARY KEY AUTOINCREMENT,
+"userID" INTEGER NOT NULL,
+"title" TEXT NOT NULL,
+"content" TEXT NOT NULL,
+"timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY ("userID") REFERENCES "users" ("userID")
+);
+
+CREATE TABLE IF NOT EXISTS "threadcategories" (
+"categoryID" INTEGER,
+"threadID" INTEGER,
+FOREIGN KEY ("categoryID") REFERENCES "categories" ("categoryID"),
+FOREIGN KEY ("threadID") REFERENCES "threads" ("threadID")
+);
+
+CREATE TABLE IF NOT EXISTS "comments" (
+"commentID" INTEGER PRIMARY KEY AUTOINCREMENT,
+"threadID" INTEGER NOT NULL,
+"userID" INTEGER NOT NULL,
+"comment" TEXT NOT NULL,
+"timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY ("threadID") REFERENCES "threads" ("threadID"),
+FOREIGN KEY ("userID") REFERENCES "users" ("userID")
+);
+
+CREATE TABLE IF NOT EXISTS "likes" (
+"commentID" INTEGER,
+"threadID" INTEGER,
+"userID" INTEGER NOT NULL,
+UNIQUE ("commentID", "userID"),
+UNIQUE ("threadID", "userID")
+);
+
+CREATE TABLE IF NOT EXISTS "dislikes" (
+"commentID" INTEGER,
+"threadID" INTEGER,
+"userID" INTEGER NOT NULL,
+UNIQUE ("commentID", "userID"),
+UNIQUE ("threadID", "userID")
+);
+
+CREATE TABLE IF NOT EXISTS "chat" (
+"fromID" INTEGER NOT NULL,
+"fromUser" TEXT NOT NULL,
+"toID" INTEGER NOT NULL,
+"message" TEXT NOT NULL,
+"timestamp" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

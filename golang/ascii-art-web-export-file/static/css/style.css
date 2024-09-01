@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  background-image: url('/static/img/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: system-ui;
+  color: rgb(0, 0, 0);
+
+}
+
+#centered {
+  text-align: center;
+  min-width: 500px;
+}
+
+h1 {
+  padding-top: 1%;
+  padding-bottom: 1%;
+  opacity: 30%;
+  background-color: rgb(247, 247, 247);
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-family: monospace;
+  min-width: fit-content;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 20px 0;
+}
+
+textarea {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  font-family: monospace;
+  background-color: hsla(240, 23%, 84%, 0.792);
+  width: 80%;
+}
+
+input[type="radio"] {
+  margin: 8px 8px;
+}
+
+pre {
+  opacity: 50%;
+  background-color: rgb(247, 247, 247);
+  overflow: auto
+}

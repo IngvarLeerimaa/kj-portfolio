@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <!-- <link href="/static/favicon.ico" rel="icon"> -->
+    <link href="../static/styles.css" rel="stylesheet">
+    <title>Game</title>
+  </head>
+  <body>
+    <div class="box">
+
+      <dialog id="isSmallScreen" class="isSmallScreen">
+        <form method="dialog">
+          <p>Please make your browser window larger, if you wish to play the game</p>
+        </form>
+      </dialog>
+
+      <dialog id="gameOverScreen">
+        <form method="dialog">
+          <p>Game over</p>
+          <button id="tryAgain">Try Again!</button>
+        </form>
+      </dialog>  
+  
+      <dialog id="pauseScreen">
+        <form method="dialog">
+          <p>Game paused</p>
+          <button id="resume" value="resume">Resume</button>
+          <button id="restart" value="restart">Restart</button>
+        </form>
+      </dialog>
+  
+      <div class="title">
+        <p class="game-title">Space Invaders</p>
+        <div class="instructions">
+          <p>Instructions:</p>
+          <p>Use left/right arrow to move the ship</p>
+          <p>Space to shoot</p>
+          <p>Esc to pause</p>
+          <p>Press f5 to restart</p>
+        </div>
+        <p class="start-game">Press space to start</p>
+      </div>
+
+      <div class="game" hidden>
+        <div class="lives"></div>
+        <div class="time"></div>
+        <div class="score"></div>
+        <div class="enemies"></div>
+      </div>
+    </div>
+  
+    <script type="module" src="../static/index.js"></script> 
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="../style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+ 
+    <title>Forum - Login</title>  
+</head>
+<body>
+    <div class="header">
+        <h1>
+            <a href="/">Login to your account below</a>
+        </h1>
+        <a href="/" class="navBtn">Home</a>
+    </div>
+    {{ . }}
+    <br> 
+    <form action="/login" method="POST">
+        <input class="comment" class="comment" type="text" name="username" placeholder="Username" autofocus>
+        <br>
+        <input class="comment" type="password" name="password" placeholder="Password">
+        <br>
+        <input class="comment" type="submit" value="Login"> 
+    </form>
+</body>
+</html>

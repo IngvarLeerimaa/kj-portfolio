@@ -1,0 +1,11 @@
+{
+  "name": "mini-framework",
+  "version": "1.0.0",
+  "description": "mini-framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "author": "",
+  "license": "ISC"
+}

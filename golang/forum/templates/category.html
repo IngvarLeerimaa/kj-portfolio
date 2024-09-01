@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="stylesheet" href="../style/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+        <title>Forum - {{ .CategoryName }}</title>
+    </head>
+    <body>
+        <!--Header-->
+        <div class="container">
+        <div class="header">
+            <h1 class="center"><a href="/">Forum</a> > {{ .CategoryName }}</h1>
+            {{ if .User.Id }}
+            <div class="center">
+                <a href="/" class="navBtn">Home</a>
+                <a href="/profile" class="navBtn">Profile</a>
+                <a href="/logout" class="navBtn">Logout</a> 
+               <!-- 
+                <form action="/">
+                    <button type="submit">Home</button>
+                </form>
+                <form action ="/profile">
+                    <button type="submit">Profile</button>
+                </form> 
+                <form action="/logout">
+                    <button type="submit">Logout</button>
+                </form> -->
+            </div>
+            {{ else }}
+                <div class="center">
+                    <a href="/" class="navBtn">Home</a>
+                    <a href="/login" class="navBtn">Login</a> 
+                    <a href="/register" class="navBtn">Register</a>
+                    <!-- <form action="/">
+                        <button type="submit">Home</button>
+                    </form>
+                    <form action="/login">
+                        <button type="submit">Login</button>
+                    </form>
+                    <form action="/register">
+                        <button type="submit">Register</button>
+                    </form> -->
+                </div>
+            {{ end }}
+        </header>
+        </div>
+        <!--THREAD-->
+        <main>
+           
+            
+            {{ if .Threads }}
+                {{ range .Threads }}
+                <div class="category-title">
+                    <h2>
+                        <a href="/thread?t={{ .Id }}">{{ .Title }}</a>
+                    </h2>
+                <p class="likes">Likes: {{ .Likes }} Dislikes: {{ .Dislikes}}</p>
+                    <p >Created by  {{ .Username }} at {{ .Created.Format "02 Jan 2006, 15:04:05" }}</p>
+                </div>
+                {{ end }}
+            {{ else }}
+                <p>There are no threads available.</p>
+            {{ end}}
+
+        </main>
+        <form class="comment" action="/newThread">
+            <button type="submit">Create a new thread</button>
+            </form>
+        </div>
+    </body>
+</html>
+

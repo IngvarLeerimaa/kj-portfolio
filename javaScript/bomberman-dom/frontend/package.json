@@ -1,0 +1,23 @@
+{
+  "name": "bomberman-dom",
+  "version": "1.0.0",
+  "description": "Kood/Jõhvi assingment",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://01.kood.tech/git/IngvarLeerimaa/bomberman-dom"
+  },
+  "keywords": [
+    "bomberman",
+    "mini-framework",
+    "last js assingment"
+  ],
+  "author": "IngvarLeerimaa, MargusT",
+  "license": "ISC",
+  "dependencies": {
+    "live-server": "^1.1.0"
+  }
+}

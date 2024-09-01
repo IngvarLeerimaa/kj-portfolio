@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Forum - New Thread</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <a href="/">Create your Thread below</a>
+            </h1>
+            <a href="/" class="navBtn">Home</a>
+<!--             <form action="/">
+                <button type="submit">Home</button>
+                </form> -->
+        </div>
+        <br>
+        <form action="/newThread" method="POST">
+            <input class="comment"type="text" name="title" placeholder="Title" autofocus required>
+            <br>
+            <textarea class="comment"type="text" name="content" required rows="4" cols="50" placeholder="Write your post here"></textarea>
+            <br>
+        <h3> Choose your category:</h3>
+        {{ range .Categories}}
+         <input class="comment"type="checkbox" id="{{ .Id }}" name="category" value="{{ .Id }}"><label for="{{ .Id }}">{{ .Name }}</label>
+         {{ end }}
+        <br>
+        <br>
+        <input class="comment" type="submit" value="New thread">
+    </form>
+            </div>
+            <script>
+            const subBtn = document.querySelector("input[type=submit]");
+            
+            subBtn.addEventListener ("click", () => {
+                let checked = document.querySelectorAll("input[type=checkbox]:checked");
+                if (checked.length === 0) {
+                alert("Please select a category");
+                event.preventDefault();
+                } else {
+                return true;
+                }
+            });
+            </script>
+</body>

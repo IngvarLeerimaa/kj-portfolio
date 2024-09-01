@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+     
+        <link rel="stylesheet" href="../style/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+        <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+        <title>Forum - {{ (index .Threads 0).Title }}</title>
+    </head>
+    <body>
+        <!--Header-->
+        <div class="container">
+            <div class="header">
+                <h1 class="center"> <a href="/">Forum</a> > {{ .CategoryName }} > {{ (index .Threads 0).Title }}</h1>
+                {{ if .User.Id }}
+                <div class="center">
+                        <a href="/" class="navBtn">Home</a>
+                        <a href="/profile" class="navBtn">Profile</a>
+                        <a href="/logout" class="navBtn">Logout</a> 
+                    <!-- <form action="/">
+                        <button type="submit">Home</button>
+                    </form> -->
+                    <!-- <form action ="/profile">
+                        <button type="submit">Profile</button>
+                    </form> --> 
+                          <!-- <form action="/logout">
+                        <button type="submit">Logout</button>
+                    </form> -->
+                </div>
+                {{ else }}
+                <div class="center">
+                     <a href="/" class="navBtn">Home</a>
+                    <a href="/login" class="navBtn">Login</a>
+                    <a href="/register" class="navBtn">Register</a>  
+              <!--       <form action="/">
+                        <button type="submit">Home</button>
+                    </form>
+                    <form action="/login">
+                        <button type="submit">Login</button>
+                    </form>
+                    <form action="/register">
+                        <button type="submit">Register</button>
+                    </form>  -->
+                </div>
+                {{ end }}
+            </div> <!-- close the header div -->
+        </div> <!-- close the container div -->
+        
+        <!--THREAD-->
+        <main>  
+          
+            {{ range .Threads }}
+
+                <div class="category-column">
+                    <h4>
+                        <a>{{ .Content }}</a>
+                    </h4>
+                    <div class="likes">
+                    {{ if $.User.Id }}
+                        {{ if .Liked }}
+                            <button class="btn green" id="like" value="{{ .Id }}" data-thread="true">
+                        {{ else }}
+                            <button class="btn" id="like" value="{{ .Id }}" data-thread="true">
+                        {{ end }}
+                        <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>    
+                        <label id="like-count">{{ .Likes }}</label>    
+                    </button>
+                        {{ if .Disliked }}
+                            <button  class="btn red" id="dislike" value="{{ .Id }}" data-thread="true">
+                        {{ else }}
+                            <button  class="btn" id="dislike" value="{{ .Id }}" data-thread="true">
+                        {{ end }}
+                        <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>  
+                        <label id="dislike-count">{{ .Dislikes }}</label>   
+                    </button>
+                     {{ else }}
+                        <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>    
+                        {{ .Likes }}   
+
+                        <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>  
+                        {{ .Dislikes}}
+                     {{ end }}
+                    </div>
+                    <!--username and date-->
+                    <br>
+                    <p>Created by {{ .Username }} at {{ .Created.Format "02 Jan 2006, 15:04:05" }}</p>
+                </div>
+                {{ end }}
+                <br>
+                
+                <form action="/newComment">
+                    <input type="hidden" name="t" value="{{ (index .Threads 0).Id }}">
+                    <button class="comment" type="submit">New Comment</button>
+                    </form>
+           {{ if .Comments}}
+           <br>
+           <p class="comment">Comments:</p>
+           <br>
+                {{ range .Comments }}
+                <div class="category-column">
+                    <h4>
+                        <a>{{ .Text }}</a>
+                    </h4>
+
+                    <div class="likes">
+                    {{ if $.User.Id }}
+                        {{ if .Liked }}
+                            <button class="btn green" id="like" value="{{ .Id }}" data-thread="false">
+                        {{ else }}
+                            <button class="btn" id="like" value="{{ .Id }}" data-thread="false">
+                        {{ end }}
+                        <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>    
+                        <label id="like-count">{{ .Likes }}</label>    
+                    </button>
+                        {{ if .Disliked }}
+                            <button  class="btn red" id="dislike" value="{{ .Id }}" data-thread="false">
+                        {{ else }}
+                            <button  class="btn" id="dislike" value="{{ .Id }}" data-thread="false">
+                        {{ end }}
+                        <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>  
+                        <label id="dislike-count">{{ .Dislikes }}</label>   
+                    </button>
+                     {{ else }}
+                        <i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i>    
+                        {{ .Likes }}   
+
+                        <i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i>  
+                        {{ .Dislikes}}
+                     {{ end }}
+                    </div>
+                    <!--username and date-->
+                    <br>
+                    <p>Created by {{ .Username }} at {{ .Time.Format "02 Jan 2006, 15:04:05" }}</p>
+                </div>
+                {{ end }}
+            {{ else }}
+            <br>
+                <p>There are no comments available.</p>
+            {{ end}}
+        </main>
+        
+        <script>
+const likeBtns = document.querySelectorAll('#like');
+const dislikeBtns = document.querySelectorAll('#dislike');
+const likeCounts = document.querySelectorAll('#like-count');
+const dislikeCounts = document.querySelectorAll('#dislike-count');
+
+for (let i = 0; i < likeBtns.length; i++) {
+    const likeBtn = likeBtns[i];
+    const dislikeBtn = dislikeBtns[i];
+    var likeCount = 0;
+    var dislikeCount = 0;
+
+    likeBtn.addEventListener('click', function() {  
+        if (dislikeBtn.classList.contains('red')) {
+        dislikeBtn.classList.remove('red');
+        updateDislikes('remove', this.value, this.dataset.thread);
+        dislikeCount = parseInt(dislikeCounts[i].innerHTML, 10) - 1; 
+        dislikeCounts[i].innerHTML = dislikeCount;
+        } 
+        if (!this.classList.contains('green')) {
+            updateLikes('add', this.value, this.dataset.thread);
+            likeCount = parseInt(likeCounts[i].innerHTML, 10) + 1; 
+        } else {
+            updateLikes('remove', this.value, this.dataset.thread);
+            likeCount = parseInt(likeCounts[i].innerHTML, 10) - 1; 
+        }
+    likeCounts[i].innerHTML = likeCount;
+    this.classList.toggle('green'); 
+    });
+
+    dislikeBtn.addEventListener('click', function() { 
+        if (likeBtn.classList.contains('green')) {
+        likeBtn.classList.remove('green');
+        updateLikes('remove', this.value, this.dataset.thread);
+        likeCount = parseInt(likeCounts[i].innerHTML, 10) - 1; 
+        likeCounts[i].innerHTML = likeCount;
+        } 
+        if (!this.classList.contains('red')) {
+            updateDislikes('add', this.value, this.dataset.thread);
+            dislikeCount = parseInt(dislikeCounts[i].innerHTML, 10) + 1;
+        } else {
+            updateDislikes('remove', this.value, this.dataset.thread);
+            dislikeCount = parseInt(dislikeCounts[i].innerHTML, 10) - 1;
+        }
+    dislikeCounts[i].innerHTML = dislikeCount;
+    this.classList.toggle('red');
+    });
+}
+
+function updateLikes(button, comment, thread) {
+                fetch(`/like?l=${button}&c=${comment}&t=${thread}`);
+                }         
+
+function updateDislikes(button, comment, thread) {
+                fetch(`/dislike?l=${button}&c=${comment}&t=${thread}`);
+                }       
+    </script>
+    </body>
+</html>

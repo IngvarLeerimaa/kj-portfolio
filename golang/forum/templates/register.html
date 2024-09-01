@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="stylesheet" href="../style/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+        <title>Forum - Register</title>
+    </head>
+
+    <body>
+        <div class="header">
+        <h1 >
+            <a href="/">Register your account below</a>
+            </h1>
+        <a href="/" class="navBtn">Home</a>
+
+        <!-- <form action="/">
+                <button type="submit">Home</button>
+        </form> -->
+        </div>
+        {{ if . }}
+            {{ range . }}
+                <p>{{ . }}</p>
+            {{ end }}
+        {{ end }}
+        <form action="/register" method="POST" class="category">
+            <input class="comment" type="email" name="email" placeholder="Email address" required autofocus>
+            <br>
+            <input class="comment" type="text" name="username" placeholder="Username" required>
+            <br>
+            <input class="comment" type="password" name="password" placeholder="Password" required>
+            <br>
+            <input class="comment" type="submit" value="Register"> 
+        </form>
+    </body>
+</html>
