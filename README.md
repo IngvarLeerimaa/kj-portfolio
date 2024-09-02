@@ -8,10 +8,11 @@ Other folders will contain specific tasks.
 
 ## Technologies used
 
-- Goland
+- Golang
 - JavaScript (primarily vanilla)
 - Bash
 - SQL
+- Python
 - Docker
 - jQuery
 - Virtualbox
