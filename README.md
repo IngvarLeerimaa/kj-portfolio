@@ -2,7 +2,7 @@
 
 This repository contains various examples of my assignments completed at [Kood/Jõhvi](https://kood.tech/et/) during my studies from 2022 to 2024.
 
-The Piscine folders contain a collection of fundamental assignments completed during sprints, which typically span 1 to 2 weeks. These assignments are designed to build core skills and competencies through practical, hands-on experience.
+The Piscine folders contain a collection of fundamental assignments completed during sprints, which typically span 2 to 3 weeks. These assignments are designed to build core skills and competencies through practical, hands-on experience.
 
 Other folders will contain specific tasks.
 
@@ -18,6 +18,7 @@ Other folders will contain specific tasks.
 - Virtualbox
 - Vue.js
 - node.js
+- Gorilla Websockets
 - Various packages and libraries
 
 ## Task Descriptions and Audit questions
